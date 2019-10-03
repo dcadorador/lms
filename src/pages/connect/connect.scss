@@ -1,0 +1,71 @@
+.connect-text {
+    white-space: normal; 
+    color: black;
+    text-align: justify;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 4vw;
+}
+
+.connect-text1 {
+    white-space: normal; 
+    // color: #595A5B;
+    color: black;
+    text-align: center;
+    font-size: 5vw;
+}
+
+.connect-div-coach {
+    text-align: center;
+    height:23vw;
+    width:100%;
+    background-image:url(../assets/images/username_input.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.connect-content {
+    background-color: #7FA347;
+}
+
+.ask-div {
+    width: 100%;
+}
+
+.connect-desc-div {
+    padding-top: 2.5%;
+    margin: 0!important; 
+    background-color: #DCDDDE
+}
+
+.div-form-group {
+    //margin-top: -15px;
+    text-align: justify; 
+    background-color: #DCDDDE;
+}
+
+.connect-coach-btn {
+    color: #58595B;
+    text-align: center;
+    font-size: 4vw;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    font-weight: bold;
+}
+
+.connect-presenter{
+    text-align: center;
+    height:25vw;
+    width:100%;
+    background-image:url(../assets/images/username_input.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    padding-top: 10%;
+    //padding-bottom: 1%;
+}

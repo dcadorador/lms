@@ -1,0 +1,29 @@
+page-lite-about {
+
+
+    ion-content {
+        background-color: #7ea441!important;
+
+        #about-content { 
+            padding: 10% 2%;
+            color: #fff;
+            line-height: 1.5;
+            font-size: 4vw;
+            font-weight: 100;
+
+            h1 { font-size: 7vw; font-weight: 800; }
+            p { 
+                text-align: left; 
+                strong { font-size: 5vw; }
+            }
+            hr { background-color: rgba(255, 255, 255, 0.8); }
+            a { color: white; }
+
+            ul {
+                padding: 0;
+                li { text-align: left; margin-left: 3.9vw; }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,60 @@
+<!-- Generated template for the QuizComponent component -->
+<form class="quiz_form">
+  <ion-list *ngFor="let field of quiz_fields; let i = index" style="margin-bottom: 0px;">
+      <!-- TYPE == HTML -->
+      <ion-item mode="md" *ngIf="field.type == 'html'" class="field-html" no-padding>
+          <div [innerHTML]="field.content" class="field-html-content"></div>
+      </ion-item>
+      <!-- TYPE == SECTION -->
+      <ion-item mode="md" *ngIf="field.type == 'section'">
+          <ion-label position="floating">{{ field.label }}</ion-label>
+      </ion-item>
+      <!-- TYPE == TEXT -->
+      <ion-item mode="md" *ngIf="field.type == 'text'">
+          <ion-label position="floating">{{ field.label }}</ion-label>
+          <ion-input type="text"></ion-input><br />
+      </ion-item>
+      <!-- TYPE == TEXT-AREA -->
+      <ion-item mode="md" *ngIf="field.type == 'textarea'">
+          <ion-label position="floating">{{ field.label }}</ion-label>
+          <ion-textarea></ion-textarea><br />
+      </ion-item>
+      <!-- TYPE == LIST -->
+      <ion-list *ngIf="field.type == 'list'" radio-group>
+          <ion-list-header>
+              <p>{{ field.label }}</p>
+          </ion-list-header>
+          <ion-item mode="md" *ngFor="let choice of field.choices">
+              <ion-label position="floating">{{ choice.text }}</ion-label>
+              <ion-radio mode="md" item-start [value]="choice.value" (ionSelect)="onSelect(choice.value,field.id, i)"></ion-radio>
+          </ion-item>
+      </ion-list>
+      <!-- TYPE == SELECT -->
+      <ion-list *ngIf="field.type == 'select'" radio-group>
+          <ion-list-header>
+              <p>{{ field.label }}</p>
+          </ion-list-header>
+          <ion-item mode="md" *ngFor="let choice of field.choices">
+              <ion-label position="floating">{{ choice.text }}</ion-label>
+              <ion-radio mode="md" item-start value="{{ choice.value }}"></ion-radio>
+          </ion-item>
+      </ion-list>
+      <!-- TYPE == RADIO -->
+      <ion-list *ngIf="field.type == 'quiz' || field.type == 'radio'" radio-group>
+          <h6>{{ field.label }}</h6>
+          <div [class]="field.imageChoices_enableImages ? 'choice-horizontal' : ''">
+            <ion-item mode="md" *ngFor="let choice of field.choices" [ngClass]="choice.class">
+                <!-- with label -->
+                <ion-label *ngIf="!choice.imageChoices_image" position="floating">{{ choice.text }}</ion-label>
+                <ion-radio *ngIf="!choice.imageChoices_image" mode="md" item-start [value]="choice.value + '-' + choice.text" (ionSelect)="onSelect(choice.value,field.id, i)"></ion-radio>
+
+                <!-- with image -->
+                <div class="choice-images" *ngIf="choice.imageChoices_image" (click)="onSelect(choice.value, field.id, i, choice.imageChoices_imageID)">
+                  <img [src]="choice.imageChoices_image" alt="">
+                  <caption>{{ choice.text }}</caption>
+                </div>
+            </ion-item>
+          </div>
+      </ion-list>
+  </ion-list>
+</form>

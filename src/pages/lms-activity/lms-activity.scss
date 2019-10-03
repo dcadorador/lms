@@ -1,0 +1,106 @@
+page-lms-activity {
+
+  .list .item { background-color: transparent; }
+  
+  .item-block .item-inner { 
+    border-bottom: none!important; 
+    padding-right: 0!important;
+  }
+  .item-block { 
+    min-height: 3rem;
+    font-size: 14px;
+    color: $lms-color;
+    font-weight: lighter;
+    padding-left: 0;
+    background-color: transparent;
+  }
+  ion-label { margin: 0!important; padding: 0 1.5rem; }
+  .radio-icon { border-color: $lms-color!important; }
+  .radio-checked .radio-inner { background-color: $lms-color; }
+  .item-radio-checked.item-md ion-label { color: $lms-color; font-weight: bold; }
+  .radio-md[item-start] { margin: 0 10px 0 0 !important;; }
+
+
+  // customize style
+  #assessment-container {
+    padding-bottom: 15px;
+
+    .assessment-item {
+      h6 { margin: 1.6rem 0; }
+      img.assessment-image { width: 100% }
+      ion-list { padding: 0 1rem;  margin-bottom: 3rem; }
+    }
+
+    .choice-horizontal {
+      display: flex;
+      flex-wrap: wrap;
+      padding-top: 15px;
+      .item-block {
+        flex: 1 0 21%;
+        display: block;
+        margin-bottom: 1.5rem;
+        .item-inner { align-items: start; }
+      }
+      ion-item::after {
+        display: block;
+        content: '';
+        width: 100%;
+        border-bottom: 1px solid #fff!important;
+        transform: scaleX(0);
+        transition: transform 250ms ease-in-out;
+      }
+      ion-label { margin: 11px 2px!important; }
+    }
+
+    .choice-images {
+      text-align: center;
+      caption { 
+        font-size: 2.7vw;
+        white-space: normal;
+        width: 100%;
+        display: block;
+        position: relative;
+      }
+    }
+
+    ion-item.active { 
+      // background-color: rgba(0, 0, 0, 0.1);
+      &::after {
+        transform: scaleX(0.8);
+      }
+      .choice-images caption { font-weight: bolder; }
+    }
+
+    .item-block:first-child { border-top: none; }
+    .item-block:last-child { border-bottom: none; }
+    .field-html {
+      margin: 1.5rem -1rem 0;
+      font-size: $lms-font-size;
+      width: 120%;
+
+      .field-html-content { 
+          margin: 0 -1.5rem 0;
+          padding: 0 1.5rem;
+          img { 
+            display: block;
+            margin: 1.5rem -1.5rem 0;
+            min-width: 110%;
+          }
+      }
+    }
+  }
+
+  @media screen and (min-width: 480px) {
+    .choice-images caption { font-size: 12px!important; }
+  }
+
+  .col-xs-12 { width: 100%; }
+  #lesson-notes{
+    color: black;
+    width: 100%;
+    border: 0;
+    border-radius: 0;
+    margin-top: 1.5rem;
+    padding: 0.8rem 1rem;
+  }
+}

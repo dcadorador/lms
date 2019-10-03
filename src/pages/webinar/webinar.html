@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar color="navbar">
+    <ion-buttons end>
+        <button menuToggle ion-button icon-only>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+  <ion-title style="text-align: center;">
+    <img style="padding-top: 20px;" alt="logo" width="200px" height="70%" src="assets/images/lifestreet_home_logo.jpg">
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content cache-view="false" class="webinar-content">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content pullingText="Pull to refresh..." refreshingText="Refreshing...">
+      </ion-refresher-content>
+  </ion-refresher>
+  
+  <div class="webinar-img">
+    <img width="100%" src="assets/images/watch_logo_slice.jpg"/>
+  </div>
+  <div style="margin-top:-4px;">
+    <div class="webinar-container">
+        <div class="webinar-data" >
+            <h3 class="webinar-data-h3" >{{ webinar.post_title }}</h3>
+            <p style="font-size: 3.5vw" style="white-space: pre-wrap" [innerHTML]="webinar?.about"></p>
+            <p style="font-size: 3.5vw" style="white-space: pre-wrap" [innerHTML]="webinar?.presenter"></p>
+        </div>
+        <div *ngIf="userFormAssessed() == 'true'" style="background-color: #7fa347;">
+            <iframe 
+                width="100%" 
+                height="500" 
+                [src]="webinar_video ? webinar_video : null"
+                (load)="webinar_video ? handleIFrameLoadEvent() : null"
+                border="0"
+            ></iframe>
+        </div>
+      </div>
+    <div *ngIf="userFormAssessed() == 'true'" class="webinar-action-btn">
+        <div class="rate-button">
+            <!--<button ion-button color="danger" (click)="register()">Register Now To Access this Event</button>-->
+            <button style="color: black" ion-button clear full (click)="ratePresenter()"></button>
+        </div>
+        <div class="contact-button">
+            <button style="color: black" ion-button clear full (click)="goToConnect()"></button>
+        </div>
+    </div>
+  </div>
+
+  <div class="webinar-register-access" *ngIf="userFormAssessed() == 'false'">
+    <div *ngIf="form_structure" class="register-button">
+        <!--<button ion-button color="danger" (click)="register()">Register Now To Access this Event</button>-->
+        <button style="color: #58595B; font-weight: bold; font-size: 4vw" ion-button clear full (click)="register()">REGISTER NOW TO ACCESS</button>
+    </div>
+
+  </div>
+  
+</ion-content>

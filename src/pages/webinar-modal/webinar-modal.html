@@ -1,0 +1,113 @@
+<ion-header>
+    <ion-navbar color="navbar">
+        <ion-buttons end>
+            <button menuToggle ion-button icon-only>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+        </ion-buttons>
+      <ion-title style="text-align: center;">
+        <img style="padding-top: 20px;" alt="logo" width="200px" height="70%" src="assets/images/lifestreet_home_logo.jpg">
+      </ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content class="webinar-modal-content">
+  <div class="webinar-modal-img">
+    <img width="100%" src="assets/images/watch_logo_slice.jpg"/>
+  </div>
+  <div class="webinar-modal-form" *ngIf="form">
+    <h5 style="text-align: center;">{{ form.title }}</h5>
+    <p>{{ form.description }}</p>
+    <div>
+        <form #f="ngForm">
+          <ion-list *ngFor="let field of form.fields; let i of index">
+            <!-- TYPE == SECTION -->
+            <ion-item *ngIf="field.type == 'section'">
+                <ion-label>{{ field.label }}</ion-label>
+            </ion-item>
+            <!-- TYPE == TEXT -->
+            <ion-item *ngIf="field.type == 'text'">
+                <ion-label>{{ field.label }}</ion-label>
+                <ion-input type="text"></ion-input><br />
+            </ion-item>
+            <!-- TYPE == TEXT-AREA -->
+            <ion-item *ngIf="field.type == 'textarea'">
+                <ion-label>{{ field.label }}</ion-label>
+                <ion-textarea></ion-textarea><br />
+            </ion-item>
+            
+            <!--<ion-item *ngIf="field.type == 'radio'">
+                <!--<ion-list radio-group>
+                    <ion-list-header>
+                        <p style="white-space: normal;">{{ field.label }}</p>
+                    </ion-list-header>       
+                    <!--<ion-item *ngFor="let choice of field.choices">
+                        <ion-label>{{ choice }}</ion-label>
+                        <ion-radio value="{{ choice }}"></ion-radio>
+                    </ion-item>
+                </ion-list>
+                    <ion-label>
+                        <p style="white-space: normal;">{{ field.label }}</p>
+                    </ion-label>
+                    <ion-select>
+                        <ion-option *ngFor="let choice of field.choices" value="{{ choice.value }}">{{ choice.text }}</ion-option>
+                    </ion-select>
+            </ion-item>-->
+            
+            <!-- TYPE == QUIZ -->
+            <ion-list *ngIf="field.type == 'quiz' && field.inputType == 'radio'" radio-group>
+                    <ion-list-header style="background-color: #DCDDDE">
+                        <p style="white-space: normal;">{{ field.label }}</p>
+                    </ion-list-header>
+                    <ion-item *ngFor="let choice of field.choices;">
+                        <ion-label>{{ choice.text }}</ion-label>
+                        <ion-radio  [value]="choice.value" (ionSelect)="onChange(choice.value,field.id)"></ion-radio>
+                    </ion-item><br />
+            </ion-list>
+
+            <!-- TYPE == LIST -->
+            <br/><ion-list *ngIf="field.type == 'list'" radio-group>
+                    <ion-list-header style="background-color: #DCDDDE">
+                        <p style="white-space: normal;">{{ field.label }}</p>
+                    </ion-list-header>
+                    <ion-item *ngFor="let choice of field.choices">
+                        <ion-label>{{ choice.text }}</ion-label>
+                        <ion-radio  [value]="choice.value" (ionSelect)="onChange(choice.value,field.id)"></ion-radio>
+                    </ion-item><br />
+            </ion-list>
+
+            <!-- TYPE == SELECT -->
+            <ion-list *ngIf="field.type == 'select'" radio-group>
+                    <ion-list-header style="background-color: #DCDDDE"> 
+                        <p style="white-space: normal;">{{ field.label }}</p>
+                    </ion-list-header>
+                    <ion-item *ngFor="let choice of field.choices">
+                        <ion-label>{{ choice.text }}</ion-label>
+                        <ion-radio value="{{ choice.value }}"></ion-radio>
+                    </ion-item><br />
+            </ion-list>
+
+            <!-- TYPE == RADIO -->
+            <br/><ion-list>
+                <ion-list *ngIf="field.type == 'radio'" radio-group>
+                    <ion-list-header style="background-color: #DCDDDE">
+                        <p style="white-space: normal;">{{ field.label }}</p>
+                    </ion-list-header>
+                        <ion-item *ngFor="let choice of field.choices">
+                            <ion-label>{{ choice.text }}</ion-label>
+                            <ion-radio [value]="choice.value" (ionSelect)="onChange(choice.value,field.id)"></ion-radio>
+                        </ion-item><br />
+                    </ion-list>
+            </ion-list>
+          </ion-list>
+        </form>
+    </div>
+    
+  </div>
+
+  <div class="watch-button">
+    <button style="color: #58595B; padding-top:5%; padding-bottom:5%; font-size: 4vw; font-weight: bold" ion-button clear full (click)="closeModal()">WATCH NOW</button>
+  </div>
+ 
+</ion-content>

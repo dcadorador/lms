@@ -1,0 +1,61 @@
+// place here to have a global style
+ion-toolbar[align-title="center"] {
+    .toolbar-content {
+        text-align: center;
+
+        ion-title img {
+            max-width: 200px; width: 90%; height: auto; margin-top: 10px;
+        }
+    }
+}
+
+page-lite-home {
+
+    ion-content {
+        background-color: #7ea441!important;
+
+        #home-banner { 
+            width: 100%;
+            // height: 54vw;
+            // background-color: #71933a;
+            img { width: 100%; height: auto; }
+        }
+
+        ion-list#home-menu {
+            padding: 2%;
+
+            ion-item {
+                background-color: transparent!important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.5) !important;
+                padding: 0 1.3vw!important;
+
+                ion-thumbnail {
+                    min-width: auto!important;
+                    min-height: auto!important;
+                    img { width: 15vw!important; height: 15vw!important; }
+                    margin-right: 4.6vw!important;
+                }
+
+                .item-inner { padding: 8% 1%; border: none!important; }
+
+                ion-label {
+                    font-size: 5.5vw;
+                    text-align: left;
+                    font-weight: 800;
+                    color: #fff;
+                    white-space: normal;
+
+                    :hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            :first-child { border-top: none!important; }
+            :last-child {
+                border-bottom: none!important;
+            }
+        }
+    }
+
+}

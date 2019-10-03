@@ -1,0 +1,35 @@
+page-lite-eap {
+
+    ion-content {
+        background-color: #7ea441!important;
+
+        #eap-banner { 
+            width: 100%;
+            // height: 68.7vw;
+            // background-color: #71933a;
+            img { width: 100%; }
+        }
+
+        #eap-content { 
+            padding: 2%;
+            color: #fff;
+            line-height: 1.5;
+
+            h1 { font-size: 7vw; font-weight: 800; }
+            p { 
+
+                strong { font-size: 5vw; }
+                
+                text-align: left; font-size: 4vw; font-weight: 100; 
+            }
+
+            hr { background-color: rgba(255, 255, 255, 0.8); }
+            a { color: white; }
+            ul {
+                padding: 0;
+                li { text-align: left; margin-left: 3.9vw; }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,6 @@
+<!-- Generated template for the LmsProgressComponent component -->
+<div class="progress-header" padding-right padding-left>
+  <h6 *ngIf="sub_title">{{ sub_title }}</h6>
+  <h4 *ngIf="title">{{ title }}</h4>
+  <progress-bar *ngIf="progress_color != ''" [progress]="percent" [color]="progress_color"></progress-bar>
+</div>

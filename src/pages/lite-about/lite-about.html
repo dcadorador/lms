@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="navbar" align-title="center" padding>
+
+    <ion-buttons left>
+        <button ion-button icon-only (click)="this.navCtrl.pop()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </button>
+    </ion-buttons>
+
+    <ion-buttons end>
+        <button menuToggle ion-button icon-only>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title class="ion-text-start">
+        <img alt="logo" src="assets/images/lifestreet_home_logo.jpg">
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content pullingText="Pull to refresh..." refreshingText="Refreshing...">
+      </ion-refresher-content>
+  </ion-refresher>
+
+  <div id="about-content" padding-top text-center>
+      <h1>{{ about.title }}</h1>
+      <div padding-top padding-bottom [innerHTML]="about.line_above"></div>
+
+      <hr>
+
+      <div padding-top [innerHTML]="about.line_below"></div>
+
+  </div>
+
+</ion-content>

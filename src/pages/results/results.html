@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar color="navbar" hideBackButton>
+    <ion-buttons end>
+        <button menuToggle ion-button icon-only>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title style="text-align: center;">
+        <img style="padding-top: 20px;" alt="logo" width="200px" height="70%" src="assets/images/lifestreet_home_logo.jpg">
+    </ion-title>
+</ion-navbar>
+</ion-header>
+
+<ion-content style="background-color: #7FA347;">
+    <div style="width: 100%;">
+        <img width="100%" src="assets/images/tool_heading.jpg"/>
+    </div>
+  <div class="result-group">
+    <h2 class="result-text1">{{ structure?.title }}</h2>
+    <div class="result-desc-div">
+        <p style="font-size: 4vw" [innerHTML]="tool_result_description"></p>
+    </div>
+  </div>
+  <div style="background-color: #DCDDDE;">
+    <div style="padding: 2.5%; font-size: 3.5vw; white-space: pre-wrap" [innerHTML]="result?.assessment_group_results"></div>
+    <div style="padding: 2.5%; font-size: 3.5vw; white-space: pre-wrap" [innerHTML]="result?.individual_results"></div>
+  </div>
+  <!--<div *ngIf="resultType() === false" class="div-results">
+      <h3 style="font-size: 5vw"><b>Overall Results - </b> {{ result?.score }}</h3>
+      <h6 style="font-size: 4vw"><b>Result:</b> {{ result?.result_text }}</h6>
+      <p style="font-size: 4vw">{{ result?.result_description }}</p>
+  </div>
+  <div *ngIf="resultType() === true" class="div-results">
+      <h3 ngIf="result?.type == 'group'" style="font-size: 5vw">{{ result?.group_name }} - {{ result?.score }}</h3>
+      <h6 ngIf="result?.type == 'group'" style="font-size: 4vw"><b>Result:</b> {{ result?.group_key }}</h6>
+      <p  ngIf="result?.type == 'group'" style="font-size: 4vw">{{ result?.row }}</p>
+  </div>-->
+  <div class="result-btn-div">
+        <button class="result-btn" ion-button clear full (click)="backToHome()">Home</button>
+  </div> 
+</ion-content>

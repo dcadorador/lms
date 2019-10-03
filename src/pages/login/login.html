@@ -1,0 +1,41 @@
+<ion-header>
+</ion-header>
+
+<ion-content class="masters">
+
+  <div class="logo">
+      <img alt="logo" width="70%" height="auto" src="assets/images/lifestreet_logo.jpg" >
+  </div> <!-- logo -->
+
+  <div class="flex">
+        <div class="username-input">
+          <div style="width: 100%; vertical-align: middle; text-align: center; padding-top: 3%; padding-left:5%; height: auto">
+              <ion-input class="textinput" center type="text" placeholder="Username" [(ngModel)]="username"></ion-input>
+          </div>
+        </div> <!-- username input -->
+
+        <br >
+        <div class="input1">
+          <div style="width: 100%; vertical-align: middle; text-align: center; padding-top: 3%; padding-left:5%; height: auto">
+              <ion-input class="textinput" type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+          </div>
+        </div> <!-- password input -->
+
+        <div class="forgot-password">
+          <button style="height: 10vw; width: 85%; margin-left: auto; margin-right: auto;" clear block ion-button (click)="forgotPassword()"><p style="font-size: 3.5vw; color: black" >Forgotten username or password?<br /><span><u>CONTACT US</u></span></p></button>
+        </div> <!-- forgot password -->
+
+        <div class="div-btn" text-center>
+          <button class="login-btn-btn" clear block ion-button (click)="login()">
+            <!--<img class="login-btn-img" alt="logo" src="assets/images/btn_login.jpg" >-->
+          </button>
+        </div> <!-- button -->
+
+  </div> <!-- flex div -->
+
+  <div class="footer-containter">
+      <img class="footer-img" alt="logo" src="assets/images/footer_logo.png">
+      <p style="padding-bottom: 2%; margin: 0; font-size: 2.7vw; "><span (tap)="launchSite()" style="float: left; color: white; padding-left: 5%">Privacy Policy</span><span style="float: right; padding-right: 5%; color:white">© Life Street (Australia) Pty Ltd {{ date | date:'yyyy' }}</span></p>
+  </div> <!-- footer image -->
+
+</ion-content>

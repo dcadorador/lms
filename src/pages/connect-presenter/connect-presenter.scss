@@ -1,0 +1,47 @@
+page-connect-presenter {
+
+}
+
+.connect-content {
+    background-color: #7FA347;
+}
+
+.connect-presenter{
+    text-align: center;
+    height:25vw;
+    width:100%;
+    background-image:url(../assets/images/username_input.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    padding-top: 10%;
+    padding-bottom: 2%;
+}
+
+.book-in{
+    text-align: center;
+    height:23vw;
+    width:100%;
+    background-image:url(../assets/images/password_input.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.connect-presenter-btn {
+    color: #58595B;
+    font-size: 4vw;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    font-weight: bold;
+}
+
+.connect-presenter-desc-div {
+    padding-top: 1.5%;
+    margin: 0!important; 
+    background-color: #DCDDDE
+}

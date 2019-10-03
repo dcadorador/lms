@@ -1,0 +1,33 @@
+page-lms-reports {
+
+  .item { 
+    &:nth-child(odd) {
+      background-color: $lms-bg-darker;
+    }
+    background-color: transparent;
+    color: $lms-color;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .item-inner{
+    background-size: 10px 10px!important;
+    background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2012%2020'><path%20d='M2,20l-2-2l8-8L0,2l2-2l10,10L2,20z'%20fill='%23ffffff'/></svg>")!important;
+    &:after {
+      content: 'View Results';
+      display: block;
+      font-size: 14px;
+      color: $lms-color;
+      font-weight: lighter;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  // customize styling
+  #lms-report-message {
+    background: $lms-bg-darker;
+    padding: 1.5rem;
+    margin: 0;
+  }
+
+}

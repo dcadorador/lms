@@ -1,0 +1,33 @@
+page-lms-view-results {
+
+  // customize style
+  .course-assessment__result {
+    margin: 0px!important;
+    > h3 {
+      &::before {
+        content: 'Your Score';
+        display: block;
+        position: relative;
+        text-align: center;
+        font-size: 12px;
+        font-weight: normal;
+      }
+      margin: 0px;
+      padding: 1.5rem;
+      text-align: center;
+      background-color: $lms-bg-darker;
+    }
+    .score-point, .score-total { font-size: 20px; }
+
+    .course-assessment__result-body {
+      padding: 0 1.5rem;
+    }
+
+  }
+
+  #results-header {
+    background: $lms-bg-inverse;
+    text-align: center;
+    padding: 10px 0;
+  }
+}

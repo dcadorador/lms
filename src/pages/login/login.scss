@@ -1,0 +1,87 @@
+.masters {
+ background-color: #7FA347
+}
+
+.flex {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    flex-direction: column;
+}
+
+.username-input {
+    text-align: center;
+    height:15vw;
+    width: 75%;
+    background-image:url(../assets/images/username_input.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+}
+
+.input1 {
+    text-align: center;
+    height:15vw;
+    width: 75%;
+    background-image:url(../assets/images/password_input.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+}
+
+.logo {
+    padding-top: 35px; 
+    padding-bottom: 20px; 
+    text-align: center;
+}
+
+.textinput {
+    padding-left:2.5%; 
+    width: 97.5%; 
+    background: none;
+    font-size: 5vw;
+}
+
+.forgot-password {
+    text-align: center; 
+    padding-top: 2.5%; 
+    margin: 0;
+    width: 100%;
+}
+
+.div-btn {
+    padding: 2%;
+    //margin: 0;
+    height: 25vw;
+    width: 70%;
+    background-image:url(../assets/images/btn_login.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+}
+
+.footer-container {
+    padding: 0;
+    width: 100%;
+}
+
+.contact-href {
+    text-decoration: none;
+    color: black;
+}
+
+.login-btn-btn{
+    height: 18vw; 
+    width: 50%; 
+    margin-left: 25%
+}
+
+.footer-img {
+    margin: 0;
+    padding-top: 10%;
+    width: 100%;
+    height: auto;
+}

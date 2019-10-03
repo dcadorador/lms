@@ -1,0 +1,30 @@
+.tool-text {
+    white-space: normal; 
+    color: black;
+    font-size: 3.5vw;
+}
+
+.tool-description {
+    white-space: normal; 
+    margin-top: -4px !important; 
+    padding-top: 5%; 
+    padding-bottom: 2.5%;
+    padding-left: 20px; 
+    padding-right: 20px; 
+    text-align: justify; 
+    background-color: #DCDDDE
+}
+
+.submit-button {
+    text-align: center;
+    height:15vw;
+    width:100%;
+    background-image:url(../assets/images/username_input.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    padding-top: 0px !important;
+    padding-bottom: 4%;
+    margin-top: 5%;
+}

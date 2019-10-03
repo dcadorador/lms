@@ -1,0 +1,89 @@
+<ion-header>
+    <ion-navbar color="navbar">
+        <ion-buttons end>
+            <button menuToggle ion-button icon-only>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title style="text-align: center;">
+            <img style="padding-top: 20px;" alt="logo" width="200px" height="70%" src="assets/images/lifestreet_home_logo.jpg">
+        </ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content cache-view="false" style="background-color: #7FA347;">
+    <div style="width: 100%;">
+        <img width="100%" src="assets/images/tool_heading.jpg"/>
+    </div>
+    <div class="tool-description">
+        <h3 style="text-align: center; font-size: 4vw">{{ tool.post_title }}</h3>
+        <p style="font-size: 3.5vw; white-space: pre-wrap" [innerHTML]="tool_page_description"></p>
+    </div>
+    <div style="text-align: left; background-color: #DCDDDE; padding-top: 2.5%" *ngIf="tool_form"> 
+    <div>
+        <form #f="ngForm">
+            <ion-list *ngFor="let field of tool_form.fields; let i = index">
+                <!-- TYPE == SECTION -->
+                <ion-item *ngIf="field.type == 'section'">
+                    <ion-label style="font-size: 3vw">{{ field.label }}</ion-label>
+                </ion-item>
+                <!-- TYPE == TEXT -->
+                <ion-item *ngIf="field.type == 'text'">
+                    <ion-label style="font-size:3vw">{{ field.label }}</ion-label>
+                    <ion-input type="text"></ion-input><br />
+                </ion-item>
+                <!-- TYPE == TEXT-AREA -->
+                <ion-item *ngIf="field.type == 'textarea'">
+                    <ion-label style="font-size: 3vw">{{ field.label }}</ion-label>
+                    <ion-textarea></ion-textarea><br />
+                </ion-item>
+                <!-- TYPE == LIST -->
+                <ion-list *ngIf="field.type == 'list'" radio-group>
+                    <ion-list-header style="background-color: #DCDDDE">
+                        <p style="white-space: normal; font-size: 4vw">{{ field.label }}</p>
+                    </ion-list-header>
+                    <ion-item *ngFor="let choice of field.choices">
+                        <ion-label style="font-size: 3vw">{{ choice.text }}</ion-label>
+                        <ion-radio [value]="choice.value" (ionSelect)="onChange(choice.value,field.id)"></ion-radio>
+                    </ion-item>
+                </ion-list>
+                <!-- TYPE == SELECT -->
+                <ion-list *ngIf="field.type == 'select'" radio-group>
+                    <ion-list-header style="background-color: #DCDDDE">
+                        <p style="white-space: normal; font-size: 4vw">{{ field.label }}</p>
+                    </ion-list-header>
+                    <ion-item *ngFor="let choice of field.choices">
+                        <ion-label style="font-size: 3vw">{{ choice.text }}</ion-label>
+                        <ion-radio value="{{ choice.value }}"></ion-radio>
+                    </ion-item>
+                </ion-list>
+                <!-- TYPE == RADIO -->
+                <ion-list *ngIf="field.type == 'radio'" radio-group>
+                    <ion-list-header style="background-color: #DCDDDE">
+                        <p style="white-space: normal; font-size: 4vw">{{ field.label }}</p>
+                    </ion-list-header>
+                    <ion-item *ngFor="let choice of field.choices">
+                        <ion-label style="font-size: 3vw">{{ choice.text }}</ion-label>
+                        <ion-radio [value]="choice.value" (ionSelect)="onChange(choice.value,field.id)"></ion-radio>
+                    </ion-item>
+                </ion-list>
+                <!-- TYPE == QUIZ -->
+                <ion-list [style.padding-bottom]="getPaddingBottom(i)" [style.padding-top]="getPaddingTop(i)" [style.background-color]="getStyle(i)" *ngIf="field.type == 'quiz' && field.inputType == 'radio'" radio-group>
+                        <h6 style="white-space: normal; font-size: 4vw; padding-left: 2.5%; padding-right: 2.5%;">{{ field.label }}</h6>
+                        <ion-item [style.background-color]="getStyle(i)" *ngFor="let choice of field.choices">
+                            <ion-label style="font-size: 3vw">{{ choice.text }}</ion-label>
+                            <ion-radio [value]="choice.value" (ionSelect)="onChange(choice.value,field.id)"></ion-radio>
+                        </ion-item>
+                </ion-list>
+            </ion-list>
+        </form>
+    </div>
+</div>
+    <div>
+        <div class="submit-button">
+            <button ion-button style="color: #58595B; font-weight: bold; font-size: 4vw; padding-top: 4.5%; padding-bottom:6%; height: 10vw;" ion-button clear full (click)="onSubmit()">SUBMIT</button>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-menu [content]="mycontent" persistent="true" style="width: 200%">
+        <ion-content style="background-color: #7FA347;">
+            <ion-title style="text-align: center; background-color:#58595B; height: 115px; margin-top: -45px">
+                <img style="padding-top: 65px; padding-bottom: 10px" alt="logo" width="65%" height="auto" src="assets/images/lifestreet_home_logo.jpg">
+            </ion-title>
+            <ion-list style="padding-top: 15px;">
+                <div class="togglediv">
+                    <button style="height: 10vw" ion-button clear block text-left menuClose="left" (click)="goBacktoHome()"><span class="toggletext">HOME</span></button>
+                    <img src="assets/images/line_1.jpg">
+                </div>
+                <!--<div class="togglediv">
+                    <button ion-button clear block menuClose="left" (click)="launchSite()"><span class="toggletext" style="white-space: normal;">VISIT FULL SITE</span></button>
+                    <img src="assets/images/line_2.jpg">
+                </div>-->
+                <div class="togglediv">
+                    <button style="height: 10vw" ion-button clear block menuClose="left" (click)="launchTermsAndConditions()"><span class="toggletext" style="white-space: normal;">ABOUT LIFE STREET</span></button>
+                    <!--<img src="assets/images/line_3.jpg"> -->
+                </div>
+                <!--<div class="togglediv">
+                    <button style="height: 10vw" ion-button clear block menuClose="left" (click)="logout()"><span class="toggletext">LOGOUT</span></button>
+                </div> -->   
+            </ion-list>
+        </ion-content>
+        <ion-footer style="background-color: #7FA347;">
+                <div style="color: white; text-align: center; font-size: 12px; margin: 0; padding: 0">
+                        <div>
+                            <p style="padding-bottom: -10px">Username: <br/> {{ usernameDisplay }}</p>
+                            <p>App Version: {{ version }}</p>
+                            <p style="left:0%"><button clear ion-button size="small" menuClose="left" (click)="launchSite()" style="color: white; font-size:12px; height: 50%;">Privacy Policy</button> <button clear ion-button size="small" menuClose="left" style="color: white; font-size: 12px; height: 50%;">|</button> <button ion-button clear size="small" menuClose="left" (click)="logout()" style="color: white; font-size: 12px; height: 50%;">Log Out</button></p>
+                        </div>
+                </div>
+        </ion-footer>        
+</ion-menu>
+
+<ion-nav #mycontent [root]="rootPage" swipeBackEnabled="true">
+</ion-nav>

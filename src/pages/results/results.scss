@@ -1,0 +1,50 @@
+page-results {
+
+}
+
+.result-text1 {
+    white-space: normal; 
+    // color: #595A5B;
+    color: black;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 5vw;
+    padding-top: 10%;
+}
+
+.result-desc-div {
+    padding-bottom: 1%;
+    text-align: justify;
+    color: black;
+    padding: 5px;
+}
+
+.div-results {
+    text-align: justify; 
+    background-color: #DCDDDE;
+    padding: 5px;
+}
+
+.result-group {
+    background-color: #DCDDDE; 
+    margin-top: -25px
+}
+
+.result-btn {
+    color: black;
+    font-size: 5.5vw;
+    padding-top: 0;
+}
+
+.result-btn-div {
+    text-align: center;
+    height:20vw;
+    width:100%;
+    background-image:url(../assets/images/username_input.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}

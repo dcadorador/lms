@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-navbar color="navbar">
+        <ion-buttons end>
+            <button menuToggle ion-button icon-only>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title style="text-align: center;">
+            <img style="padding-top: 20px;" alt="logo" width="200px" height="70%" src="assets/images/lifestreet_home_logo.jpg">
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content class="connect-content">
+    <div class="ask-div">
+        <img width="100%" src="assets/images/ask_slice.jpg"/>
+    </div>
+    <div style="margin-top: -25px; background-color: #DCDDDE; padding-bottom: 0;">
+        <div class="connect-desc-div">
+            <br />
+            <h3 class="connect-text1">{{ connect_form?.title }}</h3>
+            <p class="connect-text" style="white-space: pre-wrap" [innerHTML]="ask_post?.post_content"></p>
+        </div>
+        <div class="div-form-group" *ngIf="connect_form">
+        <div class="form-group">
+            <form #f="ngForm">
+            <ion-list *ngFor="let field of connect_form.fields">
+                <ion-list *ngIf="field.type == 'select'" radio-group>
+                    <ion-list-header style="background-color: #DCDDDE">
+                        <p style="white-space: normal; font-size: 2.5vw">{{ field.label }}</p>
+                    </ion-list-header>
+                    <ion-item>
+                        <ion-select required name="contact-option" [(ngModel)]="contact" (ionChange)="optionsFn()">
+                            <div *ngFor="let choice of field.choices">
+                                <ion-option *ngIf="choice.text" value="{{ choice.value }}">{{ choice.text }}</ion-option>
+                            </div>
+                        </ion-select>
+                    </ion-item>
+                </ion-list>
+            </ion-list>
+            <ion-item>
+                <ion-input *ngIf="contact == 'Email'" name="email" [(ngModel)]="input.email" placeholder="Email" required></ion-input>
+                <ion-input *ngIf="contact == 'Phone'" name="phone" [(ngModel)]="input.phone" placeholder="Phone" required></ion-input>
+            </ion-item> <br />
+            <!--<ion-item>
+                <ion-input name="subject" [(ngModel)]="input.subject" placeholder="Subject" required></ion-input>
+            </ion-item> <br /> -->
+            <ion-item>
+                <ion-textarea name="message" [(ngModel)]="input.message" style="height: 100%" placeholder="Type your question here..."
+                    required></ion-textarea>
+            </ion-item>
+            </form>
+        </div> <!-- form group -->
+    </div> <!-- connect form -->
+    </div> <!-- connect data group -->
+    <!--<div class="connect-presenter">
+            <button class="connect-presenter-btn" ion-button clear full (click)="bookSchedule()">BOOK IN</button>
+    </div>-->
+    <div class="connect-div-coach">
+        <button class="connect-coach-btn" ion-button clear full (click)="submitConnect()">SUBMIT</button>
+    </div> <!-- connect button-->
+</ion-content>

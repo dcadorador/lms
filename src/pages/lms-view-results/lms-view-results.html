@@ -1,0 +1,54 @@
+<ion-header color="navbar" class="no-border">
+  <ion-navbar color="navbar" align-title="center" hideBackButton>
+     <ion-buttons end no-padding>
+          <button class="button button-icon" ion-button icon-only (click)="presentPopover($event)">
+                  <i class="fa fa-edit fa-lg"></i>
+          </button>
+      </ion-buttons>
+    <ion-buttons end>
+        <button menuToggle ion-button icon-only>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+    <img class="header-logo" alt="logo" width="120px" height="100%" src="{{global.logo}}">
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content id="lms-content">
+
+  <!-- assessment header info -->
+  <ion-row *ngIf="from !== 'reports'">
+    <ion-col no-padding id="lms_title">
+      <lms-progress
+        [sub_title]="lms_title"
+        [title]="lms_module_title"
+        [percent]="lms_progress">
+      </lms-progress>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="from === 'reports'">
+    <ion-col id="results-header">
+      <h4>{{ lms_title }}</h4>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="loading-content" *ngIf="lms_content == null">
+    <ion-col text-center>
+      <ion-spinner color="light"></ion-spinner>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="lms_content">
+    <ion-col no-padding>
+      <div  [innerHTML]="lms_content" id="lms_inner_content"></div>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+<ion-footer padding id="lms-footer">
+  <button ion-button full (click)="next()" color="dark">
+    {{ from === 'reports' ? 'BACK TO MY REPORTS' : 'NEXT' }}
+  </button>
+</ion-footer>

@@ -1,0 +1,9 @@
+page-lms-end {
+  #lms-footer .btn-footer {
+    margin-bottom: 1.5rem;
+    &:last-child {
+      margin-top: 3rem;
+      margin-bottom: 0;
+    }
+  }
+}

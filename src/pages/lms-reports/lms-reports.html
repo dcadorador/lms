@@ -1,0 +1,46 @@
+<ion-header color="navbar" class="no-border">
+  <ion-navbar color="navbar" align-title="center" hideBackButton>
+     <ion-buttons end no-padding>
+          <button class="button button-icon" ion-button icon-only (click)="presentPopover($event)">
+                  <i class="fa fa-edit fa-lg"></i>
+          </button>
+      </ion-buttons>
+    <ion-buttons end>
+        <button menuToggle ion-button icon-only>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+    <img class="header-logo" alt="logo" width="120px" height="100%" src="{{global.logo}}">
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content id="lms-content">
+
+  <!-- report header info -->
+  <ion-row>
+    <ion-col id="lms_title">
+      <h3>{{ lms_title }}</h3>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col no-padding *ngIf="report_quizes != null">
+      <ion-list *ngIf="report_quizes && report_quizes.length > 0" no-lines>
+        <button ion-item *ngFor="let quiz of report_quizes" mode="ios" (click)="show(quiz)">
+          {{ quiz.title }}
+        </button>
+      </ion-list>
+      <p id="lms-report-message" *ngIf="report_quizes.length == 0">No quiz results.</p>
+    </ion-col>
+
+    <ion-col class="loading-content" text-center *ngIf="report_quizes == null">
+      <ion-spinner color="light"></ion-spinner>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
+
+<ion-footer padding id="lms-footer">
+  <button ion-button full (click)="close()" color="dark">CLOSE</button>
+</ion-footer>

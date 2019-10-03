@@ -1,0 +1,204 @@
+ion-navbar {
+    height: 100px;
+}
+
+
+.home-content {
+    background-color: #BCD667!important;
+}
+
+.card-title-left {
+    position: absolute;
+    top: 35%;
+    font-size: 5vw;
+    width: 85%;
+    font-weight: 600;
+    color: black;
+    left: 10%;
+}
+
+.card-title-right {
+    position: absolute;
+    top: 35%;
+    font-size: 5vw;
+    width: 85%;
+    font-weight: 600;
+    color: black;
+    left: 60%;
+}
+
+.resilience {
+    position: relative;
+    height: 45vw; 
+    width: 100%;
+    //background-image:url(../assets/images/webinar_logo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+}
+
+.tool-part {
+    position: relative;
+    height: 45vw; 
+    width: 100%;
+    background-image:url(../assets/images/do_logo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+}
+
+.session-part {
+    position: relative;
+    height: 45vw; 
+    width: 100%;
+    background-image:url(../assets/images/book_logo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+}
+
+.ask-part {
+    position: relative;
+    height: 45vw; 
+    width: 100%;
+    background-image:url(../assets/images/ask_logo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+}
+
+#wb_minute_notif_bar,#lms_notif_bar {
+    background: #666666;
+    color: #fff;
+    text-align: center;
+    padding: 1.5em 1.5em 3em;
+}
+
+#wb_minute_notif_bar {
+    h4{
+        font-size: 4vw;
+        color: #BCD85F;
+    }
+    h3 { font-size: 5.3vw; }
+}
+
+#wb_minute_notif_bar a{
+	 background: #fff; 
+	color: #000;
+	font-weight: bold;
+	padding: 7px 15px;
+	border: solid 3px #000;
+    box-shadow: 4px 3px 0px #000;
+    text-decoration: none;
+}
+
+#wb_minute_notif_bar h3{
+	margin-bottom: 1em;
+	display: block;
+}
+
+.dynamic-event-title {
+    padding-left:5%; 
+    padding-right:5%; 
+    font-size:5.25vw; 
+    color: #BFD378; 
+    display: table-cell; 
+    vertical-align: middle;
+    text-align:center; 
+    word-wrap: normal;
+}
+
+.dynamic-event-div {
+    width:100%; 
+    display: table; 
+    text-align: center; 
+    height: 28vw; 
+    background-color: #58595B;
+}
+
+.row-panels {
+    padding: 0; 
+    margin: 0; 
+    width: 100%; 
+    min-height: 49vw; 
+    align-items: center;
+}
+
+.dark-panel {
+    background-color: #7FA347;
+}
+
+.light-panel {
+    background-color: #BCD667; 
+}
+
+.col-panel-title {
+    font-size: 5.60vw; 
+    white-space: normal; 
+    font-family: Roboto;
+}
+
+.cpt-center {
+    text-align: center;
+}
+
+.col-watch-logo {
+    /*padding-left: 5%; 
+    padding-top: 4.5%;*/
+    flex: min-content;
+}
+
+.col-tool-title {
+    padding-left: 5%; 
+    padding-top: 4.5%;
+}
+
+.col-do-logo {
+    margin: 0; 
+    padding-top: 4.5%; 
+    padding-right: 5%
+}
+
+.col-book-logo {
+    /*padding-left: 5%; 
+    padding-top: 4%; 
+    height: 100%*/
+    flex: min-content;
+}
+
+.col-book-logo img {
+    height: 37vw;
+    width: 100%;
+}
+
+.col-ask-logo {
+    margin: 0; 
+    padding-top: 2.5%; 
+    padding-bottom: 2.5%; 
+    padding-right: 5%
+}
+
+.padded-row {    
+    padding: 0 5vw;
+}
+
+.col-title-center {
+    text-align: center; margin-left: 5vw;
+}
+
+#lms_notif_bar{
+    h3 { 
+        display: block;
+        font-size: 5.3vw; 
+        margin: 0;
+    }
+    h4{
+        display: block;
+        margin-top: 1rem;
+        font-size: 4vw; 
+    }
+}

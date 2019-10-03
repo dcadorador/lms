@@ -1,0 +1,56 @@
+<ion-header color="navbar" class="no-border">
+    <ion-navbar color="navbar" align-title="center" hideBackButton>
+     <ion-buttons end no-padding>
+          <button class="button button-icon" ion-button icon-only (click)="presentPopover($event)">
+                  <i class="fa fa-edit fa-lg"></i>
+          </button>
+      </ion-buttons>
+    <ion-buttons end>
+        <button menuToggle ion-button icon-only>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+    <img class="header-logo" alt="logo" width="120px" height="100%" src="{{global.logo}}">
+  </ion-navbar>
+</ion-header>
+<ion-content no-padding id="lms-content">
+    <div *ngIf="!global.is_loading">
+     <ion-row>
+       <ion-col id="lms_title" text-wrap>
+         <h3>{{lms_title}}</h3>     
+       </ion-col>    
+     </ion-row> 
+
+     <ion-row no-padding>
+        <ion-col id="lms_inner_content" no-padding *ngIf="showNotes">           
+          <h6>{{lms_notes_title}}</h6>
+          <ion-card>
+            <ion-card-content>
+              <ion-list >		
+                <ion-item *ngFor="let n of showNotes">				
+                  <div id="{{n.lesson_id}}"  class="notes_id">
+                    <p id="notes-id" hidden>{{n.lesson_id}}</p>
+                    <p id="date-{{n.lesson_id}}" class="notes-date"><span style="font-size:14px;">{{n.date}}</span></p>
+                    <p id="notes_question-{{n.lesson_id}}" class="notes-question"><span style="font-size:14px;">Q. {{n.notes_question}}</span></p>
+                    <p [innerHTML]="n.notes" id="notes-{{n.lesson_id}}" class="notes" contenteditable="true"></p>	       
+                  </div>                                                  		 
+                </ion-item>
+              </ion-list>			   
+            </ion-card-content>                          
+          </ion-card>
+        </ion-col>
+     </ion-row>
+     <ion-row  class="loading-content" *ngIf="!showNotes">
+       <ion-col padding text-center>    
+          <ion-spinner color="light"></ion-spinner>
+       </ion-col>
+     </ion-row>
+</div>   
+</ion-content>
+
+<ion-footer padding id="lms-footer">
+  <button type="submit" ion-button full (click)="lmsSaveNotes()">{{global.button_text}}</button>
+</ion-footer>
+
+  
+  

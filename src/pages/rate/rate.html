@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-navbar color="navbar">
+        <ion-title style="text-align: center;">
+            <img style="padding-top: 20px;" alt="logo" width="200px" height="70%" src="assets/images/lifestreet_home_logo.jpg">
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content class="rate-content">
+    <div class="rate-img">
+        <img width="100%" src="assets/images/watch_logo_slice.jpg"/>
+    </div>
+    <div class="rate-description">
+        <h3 class="rate-text">{{ form?.title }}</h3>
+    </div>
+    <div class="rate-form-group">
+        <div class="form-group" *ngIf="form">
+        <form #f="ngForm">
+        <ion-list *ngFor="let field of form.fields">
+        <ion-list *ngIf="field.type == 'survey'" radio-group>
+        <ion-list-header>
+            <p style="white-space: normal; font-size: 5vw">{{ field.label }}</p>
+        </ion-list-header>
+        <ion-item *ngFor="let choice of field.choices">
+        <ion-label style="font-size: 4vw">{{ choice.text }}</ion-label>
+        <ion-radio value="{{ choice.value }}" (ionSelect)="onChoosing(choice.value,field.id)"></ion-radio>
+        </ion-item>
+        </ion-list>
+        </ion-list> <!-- form fields -->
+        </form> <!-- form -->
+    </div> <!-- form group -->
+    </div> <!-- container -->
+    <div class="rate-presenter-button">
+        <button style="color: #58595B; padding-top: 5%; padding-bottom:4%; font-size: 4vw; font-weight: bold" ion-button clear full (click)="rateNow()">SUBMIT</button>
+    </div>
+</ion-content>

@@ -1,0 +1,177 @@
+<ion-header no-border>
+    <ion-navbar color="navbar" align-title="center">
+      <ion-buttons end>
+          <button menuToggle ion-button icon-only>
+              <ion-icon name="menu"></ion-icon>
+          </button>
+      </ion-buttons>
+      <ion-title style="position: absolute; top: 0;left: -10px; padding: 0 50px 1px; width: 105%; height: 110%;text-align: center;">
+          <img alt="logo" width="200px" height="175%" src="assets/images/lifestreet_home_logo.jpg">
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content class="home-content" no-padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingText="Pull to refresh..." refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <div *ngIf="is_loading == false">
+        <ion-grid style="padding: 0; margin: 0; margin-bottom: 0">
+                    <ion-row>
+                        <ion-col id="lms_notif_bar" *ngIf="lms_title && lms_status != 'decline'">
+                            <img src="assets/images/lifestreet_lms_logo.png" alt="" style="width: 40vw; max-width: 220px;margin-bottom:2rem;">
+                            <div *ngIf="lms_invited">
+                                    <h4>You've Been Invited To Complete</h4>
+                                    <h3>{{ lms_module_title }}</h3>
+                            </div>  
+                            <h3>{{lms_title}}</h3>
+                            <div *ngIf="lms_started">
+                                    <h4 *ngIf="lms_schedule">Schedule to resume on {{ lms_schedule }}</h4>
+                            </div>   
+                            <div [ngSwitch]="lms_status">                       
+                            <button ion-button mode="md" full (click)="lmsView()" style="background-color: #3dc3fa; letter-spacing: 1.2px;margin-top:2rem;" *ngSwitchCase="'Started'">Resume Now</button>        
+                            <button ion-button mode="md" (click)="lmsAccept()" style="background-color: #3dc3fa; letter-spacing: 1.2px;margin-top:1.5rem; padding: 0 4rem;" *ngSwitchCase="'Invited'">Accept</button>   
+                            <button ion-button mode="md" (click)="lmsDecline()" style="background-color: #3dc3fa; letter-spacing: 1.2px;margin-top:1.5rem; padding: 0 4rem;" *ngSwitchCase="'Invited'">Decline</button>    
+                        </div>              
+                         </ion-col>    
+                    </ion-row>
+        </ion-grid>
+
+        <ion-grid style="padding: 0; margin: 0; margin-bottom: 0">
+            <ion-row>
+                <ion-col id="wb_minute_notif_bar" *ngIf="user_wb_minute">
+                    <img src="assets/images/lifestreet_wb_logo.png" alt="" style="width: 40vw; max-width: 220px;">
+                    <h3>{{ show_wb_minute_user[0].post_title }}</h3>
+                    <button ion-button mode="md" full (click)="wellbeingView()" style="background-color: #FCB036; letter-spacing: 1.2px;">View Now</button>
+                </ion-col>    
+            </ion-row>
+        </ion-grid>
+
+        <!-- 
+            User Related Part
+        -->
+        <div *ngIf="check_user_trending == true && home_settings != null" class="dynamic-event-div">
+            <h3 class="dynamic-event-title" >
+                {{ home_settings?.company_app_event_title }}
+            </h3>
+        </div>
+        <ion-grid *ngIf="check_user_trending == true" style="padding: 0; margin: 0; margin-bottom: 0">
+            <ion-row *ngIf="user_webinar != null" class="padded-row row-panels light-panel" (click)="cardAction(user_webinar)">
+                    <ion-col class="col-watch-logo cpt-center" col-6>
+                        <img width="100%" alt=" " src="{{ home_settings?.watch_logo }}" />
+                    </ion-col>
+                    <ion-col class="col-title-center">
+                        <h3 class="col-panel-title">
+                            {{ 
+                                (home_settings?.company_webinar_short_app_name != null && home_settings?.company_webinar_short_app_name.trim() != '') ? 
+                                    home_settings?.company_webinar_short_app_name: user_webinar?.post_title
+                            }}
+                        </h3> 
+                    </ion-col> 
+                </ion-row>  <!-- watch part -->
+        
+                <ion-row *ngIf="user_tool != null" class="row-panels dark-panel" (click)="cardAction(user_tool)">
+                    <ion-col class="col-tool-title cpt-center" col-7>
+                        <div>
+                            <h3 class="col-panel-title">
+                                {{ 
+                                    (home_settings?.company_tool_short_app_name != null && home_settings?.company_tool_short_app_name.trim() != '') ? 
+                                        home_settings?.company_tool_short_app_name : user_tool?.post_title
+                                }}
+                            </h3>
+                        </div>
+                    </ion-col>
+                    <ion-col class="col-do-logo cpt-center">
+                        <img height="91.5%" width="91.5%" alt=" " src="{{ home_settings?.do_logo }}" />
+                    </ion-col>
+                </ion-row> <!-- tool part -->
+            
+                <ion-row *ngIf="home_settings != null" class="padded-row row-panels light-panel" (click)="scheduleSession()">
+                    <ion-col class="col-book-logo cpt-center" col-6>
+                        <img height="100%" width="100%" alt=" " src="{{ home_settings?.book_logo }}" />
+                    </ion-col>
+                    <ion-col>
+                        <div class="col-title-center">
+                            <h3 class="col-panel-title">{{ home_settings?.book_title }}</h3>
+                        </div>                        
+                    </ion-col>
+                </ion-row> <!-- book part -->
+            
+                <ion-row *ngIf="home_settings != null" class="row-panels dark-panel" (click)="contact()">
+                    <ion-col class="col-tool-title cpt-center" col-7>
+                        <div style="width: 80%;">
+                            <h3 class="col-panel-title cpt-center">{{ home_settings?.ask_title }}</h3>
+                        </div>
+                    </ion-col>
+                    <ion-col class="col-ask-logo cpt-center">
+                        <img height="100%" width="100%" alt=" " src="{{ home_settings?.ask_logo }}" />
+                    </ion-col>
+                </ion-row> <!-- ask part -->
+        </ion-grid>
+
+
+
+        <!--
+          Trending Topics Default
+        -->
+
+        <div *ngIf="home_settings !=null">
+            <div *ngIf="check_user_trending == true" class="dynamic-event-div">
+                <h3 class="dynamic-event-title">
+                    {{ home_settings?.app_events_title }}
+                </h3>
+            </div>
+
+            <ion-grid style="padding: 0; margin: 0; margin-bottom: 0">
+                <ion-row class="padded-row row-panels light-panel" (click)="cardAction(webinar)">
+                    <ion-col class="col-watch-logo cpt-center" col-6>
+                        <img height="100%" width="100%" alt=" " src="{{ home_settings?.watch_logo }}" />
+                    </ion-col>
+                    <ion-col>
+                        <div class="col-title-center">
+                            <h3 class="col-panel-title">{{ home_settings?.webinar_title.post_title }}</h3>
+                        </div>
+                    </ion-col> 
+                </ion-row>  <!-- watch part -->
+
+                <ion-row class="row-panels dark-panel" (click)="cardAction(tool)">
+                    <ion-col class="col-tool-title cpt-center" col-7>
+                        <div style="width: 95%;">
+                            <h3 class="col-panel-title">{{ home_settings?.tool_name.post_title }}</h3>
+                        </div>
+                    </ion-col>
+                    <ion-col class="col-do-logo cpt-center">
+                        <img height="91.5%" width="91.5%" alt=" " src="{{ home_settings?.do_logo }}" />
+                    </ion-col>
+                </ion-row> <!-- tool part -->
+            
+                <ion-row class="padded-row row-panels light-panel" (click)="scheduleSession()">
+                    <ion-col class="col-book-logo cpt-center" col-6>
+                        <img height="100%" width="100%" alt=" " src="{{ home_settings?.book_logo }}" />
+                    </ion-col>
+                    <ion-col style="text-align: center">
+                        <div class="col-title-center">
+                            <h3 class="col-panel-title">{{ home_settings?.book_title }}</h3>
+                        </div>
+                    </ion-col>
+                </ion-row> <!-- book part -->
+            
+                <ion-row class="row-panels dark-panel" (click)="contact()">
+                    <ion-col class="col-tool-title cpt-center" col-7>
+                        <div style="width: 80%;">
+                            <h3 class="col-panel-title cpt-center">{{ home_settings?.ask_title }}</h3>
+                        </div>
+                    </ion-col>
+                    <ion-col class="col-ask-logo cpt-center">
+                        <img height="100%" width="100%" alt=" " src="{{ home_settings?.ask_logo }}" />
+                    </ion-col>
+                </ion-row> <!-- ask part -->
+
+                
+            </ion-grid> <!-- grid -->
+
+        </div>
+    </div>
+</ion-content>

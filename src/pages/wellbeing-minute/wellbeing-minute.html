@@ -1,0 +1,145 @@
+<ion-header color="navbar">
+  <ion-navbar color="navbar" align-title="center">
+    <ion-buttons end>
+        <button menuToggle ion-button icon-only>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title style="position: absolute; top: 0;left: -10px; padding: 0 50px 1px; width: 105%; height: 110%;">
+      <img alt="logo" width="120px" height="100%" src="{{logo}}">      
+    </ion-title> 
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding fullscreen [style.background-color]="wb_style.background" [style.color]="wb_style.text">
+  <div *ngIf="!is_loading">
+    <ion-row>
+      <ion-col id="wb_minute_title" text-wrap [style.background-color]="wb_style.header">
+           <h3 [style.color]="wb_style.header == wb_style.text ? invertHex(wb_style.text) : wb_style.text ">{{wb_minute_title}}</h3>
+      </ion-col>    
+    </ion-row> 
+
+    <ion-row id="wb_minute_content">
+      <ion-col no-padding> 
+        <div  [innerHTML]="wb_minute_content | safeHtmlPipe" id="wb_inner_content"></div>
+      </ion-col>    
+    </ion-row> 
+
+    <div *ngIf="wb_minute_quiz && wb_minute_quiz.length > 0">
+      <ion-row *ngFor="let quiz of wb_minute_quiz">
+        <ion-col no-padding>
+          <div [id]="'quiz-info-' + quiz.id">
+            <h4 *ngIf="quiz.has_title" text-center class="quiz_title">
+              {{ quiz.title }}
+            </h4>
+
+            <p *ngIf="quiz.has_description" padding class="quiz_description">
+              {{ quiz.description }}
+            </p>
+          </div>
+          
+          <!-- Minute Quiz Section GF -->
+          <form #f="ngForm" *ngIf="quiz.results == null && is_taking_quiz && quiz" class="quiz_form">
+
+              <ion-list *ngFor="let field of quiz.fields; let i = index" style="margin-bottom: 0px;">
+                  <!-- TYPE == SECTION -->
+                  <ion-item *ngIf="field.type == 'section'">
+                      <ion-label style="font-size: 3vw">{{ field.label }}</ion-label>
+                  </ion-item>
+                  <!-- TYPE == TEXT -->
+                  <ion-item *ngIf="field.type == 'text'">
+                      <ion-label style="font-size:3vw">{{ field.label }}</ion-label>
+                      <ion-input type="text"></ion-input><br />
+                  </ion-item>
+                  <!-- TYPE == TEXT-AREA -->
+                  <ion-item *ngIf="field.type == 'textarea'">
+                      <ion-label style="font-size: 3vw">{{ field.label }}</ion-label>
+                      <ion-textarea></ion-textarea><br />
+                  </ion-item>
+                  <!-- TYPE == LIST -->
+                  <ion-list *ngIf="field.type == 'list'" radio-group>
+                      <ion-list-header style="background-color: #DCDDDE">
+                          <p style="white-space: normal; font-size: 4vw">{{ field.label }}</p>
+                      </ion-list-header>
+                      <ion-item *ngFor="let choice of field.choices">
+                          <ion-label style="font-size: 3vw">{{ choice.text }}</ion-label>
+                          <ion-radio [value]="choice.value" (ionSelect)="onChange(choice.value,field.id, i, quiz)"></ion-radio>
+                      </ion-item>
+                  </ion-list>
+                  <!-- TYPE == SELECT -->
+                  <ion-list *ngIf="field.type == 'select'" radio-group>
+                      <ion-list-header style="background-color: #DCDDDE">
+                          <p style="white-space: normal; font-size: 4vw">{{ field.label }}</p>
+                      </ion-list-header>
+                      <ion-item *ngFor="let choice of field.choices">
+                          <ion-label style="font-size: 3vw">{{ choice.text }}</ion-label>
+                          <ion-radio value="{{ choice.value }}"></ion-radio>
+                      </ion-item>
+                  </ion-list>
+                  <!-- TYPE == RADIO -->
+                  <ion-list *ngIf="field.type == 'radio'" 
+                    radio-group
+                    style="margin-bottom: 0px; color: #222; padding-top: 1.75%;"
+                    [style.background-color]="getItemBG(i)">
+                      <h6 style="white-space: normal; font-size: 4vw;">{{ field.label }}</h6>
+                      <ion-item 
+                        [style.background-color]="getItemBG(i)"
+                        *ngFor="let choice of field.choices">
+                          <ion-label style="font-size: 3vw">{{ choice.text }}</ion-label>
+                          <ion-radio [value]="choice.value" (ionSelect)="onChange(choice.value,field.id, i, quiz)"></ion-radio>
+                      </ion-item>
+                  </ion-list>
+                  <!-- TYPE == QUIZ -->
+                  <ion-list 
+                    *ngIf="field.type == 'quiz' && field.inputType == 'radio'" radio-group
+                    style="margin-bottom: 0px; color: #222; padding-top: 1.75%;"
+                    [style.background-color]="getItemBG(i)">
+                          <h6 style="white-space: normal; font-size: 4vw;">{{ field.label }}</h6>
+                          <ion-item 
+                            [style.background-color]="getItemBG(i)"
+                            *ngFor="let choice of field.choices">
+                              <ion-label style="font-size: 3vw">{{ choice.text }}</ion-label>
+                              <ion-radio [value]="choice.value" (ionSelect)="onChange(choice.value,field.id, i, quiz)"></ion-radio>
+                          </ion-item>
+                  </ion-list>
+              </ion-list>
+              <div padding style="padding-bottom: 0px;">
+                <!-- While Taking the Quiz -->
+                <button 
+                  *ngIf="is_taking_quiz === true"
+                  mode="md"
+                  ion-button full (click)="onSubmitQuiz(quiz)"
+                  [style.background-color]="wb_style.button"
+                  [style.color]="wb_style.button_text">
+                  Submit
+                </button>
+              </div>
+          </form>
+
+          <div *ngIf="quiz.results" padding class="quiz_results" [id]="'quiz-result-' + quiz.id">
+
+            <div [innerHTML]="quiz.results?.assessment_group_results"></div>
+            <div [innerHTML]="quiz.results?.individual_results"></div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <ion-row>
+      <ion-col padding text-center>
+
+        <!-- When Completed Quiz or w/o Quiz -->
+        <button 
+            id="btn-finish"
+            mode="md"
+            ion-button
+            full 
+            [style.background-color]="wb_style.button"
+            [style.color]="wb_style.button_text"
+            (click)="onCompleted()">
+          {{ wb_minute_close_text }}
+        </button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

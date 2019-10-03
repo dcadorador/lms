@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar color="navbar" align-title="center" padding>
+    <ion-buttons left>
+        <button menuToggle ion-button icon-only>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-buttons end>
+        <button menuToggle ion-button icon-only>
+            <ion-icon></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title class="ion-text-start">
+        <img alt="logo" src="assets/images/lifestreet_home_logo.jpg">
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingText="Pull to refresh..." refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
+
+
+    <div *ngIf="!isLoading && settings">
+        <ion-grid style="padding: 0; margin: 0; margin-bottom: 0">
+            <ion-row>
+                <ion-col id="wb_minute_notif_bar" *ngIf="user_wb_minute">
+                    <img src="assets/images/lifestreet_wb_logo.png" alt="" style="width: 40vw; max-width: 220px;">
+                    <h3>{{ wb_minute.post_title }}</h3>
+                    <button ion-button full (click)="goto('minute')" style="background-color: #FCB036; letter-spacing: 1.2px;">View Now</button>
+                </ion-col>    
+            </ion-row>
+        </ion-grid>
+        <div id="home-banner">
+            <img src="{{ settings.featured_image || 'https://placehold.it/300x150' }}" />
+        </div>
+
+        <div padding>
+            <ion-list id="home-menu">
+                <ion-item (click)="goto('eap')">
+                    <ion-thumbnail item-left>
+                        <img src="assets/images/lite/eap.png">
+                    </ion-thumbnail>
+                    <ion-label>{{ settings?.eap_title }}</ion-label>
+                </ion-item>
+                <ion-item (click)="goto('about')">
+                    <ion-thumbnail item-left>
+                        <img src="assets/images/lite/about.png">
+                    </ion-thumbnail>
+                    <ion-label>{{ settings?.about_your_eap_title }}</ion-label>
+                </ion-item>
+                <ion-item (click)="goto('book')">
+                    <ion-thumbnail item-left>
+                        <img src="assets/images/lite/book.png">
+                    </ion-thumbnail>
+                    <ion-label>{{ settings?.book_an_appointment_title }}</ion-label>
+                </ion-item>
+                <ion-item (click)="goto('contact')">
+                    <ion-thumbnail item-left>
+                        <img src="assets/images/lite/contact.png">
+                    </ion-thumbnail>
+                    <ion-label>{{ settings?.ask_a_question_title }}</ion-label>
+                </ion-item>
+            </ion-list>
+        </div>
+    </div>
+
+</ion-content>

@@ -1,0 +1,27 @@
+page-lite-book {
+
+    ion-content {
+        background-color: #7ea441!important;
+
+        #book-content {
+
+            height: 100%;
+            width: 100%;
+
+            
+            #book-textbase { padding-top: 0; white-space: pre-line; font-size: 4vw; font-weight: 100; padding-bottom: 35px; }
+            #book-calendar { width: 100%; height: 100%; }
+            #book-frame { position: absolute; background-color: #fff; }
+
+            color: #fff;
+            line-height: 1.5;
+
+            h1 { font-weight: 800; font-size: 7vw; padding-top: 30px; padding-bottom: 35px; }
+            h4 { font-size: 6vw; }
+            p { text-align: justify; font-size: 5vw; font-weight: 100; }
+            hr { background-color: rgba(255, 255, 255, 0.8); margin: 10vw 0;}
+            a { color: #fff; }
+        }
+    }
+
+}

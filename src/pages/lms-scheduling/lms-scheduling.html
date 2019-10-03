@@ -1,0 +1,52 @@
+<ion-header color="navbar" class="no-border">
+  <ion-navbar color="navbar" align-title="center" hideBackButton>
+     <ion-buttons end no-padding>
+          <button class="button button-icon" ion-button icon-only (click)="presentPopover($event)">
+                  <i class="fa fa-edit fa-lg"></i>
+          </button>
+      </ion-buttons>
+    <ion-buttons end>
+        <button menuToggle ion-button icon-only>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+    <img class="header-logo" alt="logo" width="120px" height="100%" src="{{global.logo}}">
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding id="lms-content">
+
+  <!-- end header info -->
+  <ion-row>
+    <ion-col no-padding id="lms_title">
+      <lms-progress
+          [sub_title]="lms_title"
+          [title]="global.lms_module_title"
+          [percent]="global.lms_progress">
+      </lms-progress>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col no-padding>
+      <div  [innerHTML]="lms_content" id="lms_inner_content"></div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col text-center padding>
+      <i id="scheduling-icon" class="fa fa-calendar"></i>
+      <ion-datetime 
+        id="scheduling-input"
+        displayFormat="DD | MM | YYYY"
+        pickerFormat="DD | MM | YYYY"
+        [(ngModel)]="lms_start_date"
+        placeholder="DD | MM | YEAR"
+        [min]="lms_min_date"
+        [max]="lms_max_date"></ion-datetime>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+<ion-footer padding id="lms-footer">
+  <button ion-button full color="dark" (click)="lmsActionDone()">{{ global.button_text }}</button>
+</ion-footer>

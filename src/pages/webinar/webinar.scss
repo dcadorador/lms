@@ -1,0 +1,83 @@
+page-webinar {
+
+}
+
+.register-button {
+  padding-top: 10%;
+  text-align: center;
+  height:23vw;
+  width:100%;
+  background-image:url(../assets/images/username_input.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-origin: content-box;
+}
+
+.rate-button {
+  padding-top: 15%;
+  padding-bottom: 5%;
+  text-align: center;
+  height:50%;
+  padding-left: 15%;
+  padding-right: 15%;
+  width:100%;
+  background-image:url(../assets/images/rate_slice.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-origin: content-box;
+}
+
+.contact-button {
+  padding-top:5%;
+  padding-bottom: 10%;
+  text-align: center;
+  height:50%;
+  padding-left: 15%;
+  padding-right: 12.5%;
+  width:100%;
+  //background-image:url(../assets/images/connect_slice.jpg);
+  background-image:url(../assets/images/connect_slice_2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-origin: content-box;
+}
+
+.webinar-content {
+  background-color: #7FA347;
+}
+
+.webinar-img {
+  width: 100%;
+}
+
+.webinar-container {
+  background-color:#DCDDDE;
+}
+
+.webinar-data {
+  text-align: justify;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
+
+.webinar-data-h3 {
+  text-align: center;
+  font-size: 4vw
+}
+
+.webinar-action-btn {
+  text-align: center;
+  width: 100%;
+  height: auto
+}
+
+.webinar-register-access {
+  text-align: center;
+  width: 100%;
+  height: auto
+}

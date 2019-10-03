@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="navbar" hideBackButton>
+  <ion-buttons left>
+    <button ion-button clear (click)="backToHome()">
+      <ion-icon name="arrow-back" style="color: white;"> Back </ion-icon> 
+    </button>
+  </ion-buttons> 
+  <ion-title style="position: absolute; top: 0;left: 0;padding: 0 90px 1px;width: 100%;height: 100%;text-align: center;">
+    <img style="padding-top: 20px;" alt="logo" width="200px" height="70%" src="assets/images/lifestreet_home_logo.jpg">
+  </ion-title>
+</ion-navbar>
+</ion-header>
+
+
+<ion-content class="terms-conditions-content">
+  <div class="terms-div">
+    <img width=100% src="assets/images/about_slice.png"/>
+  </div>
+    <div style="text-align: justify; font-size: 5vw; padding-left: 5%; padding-right: 5%">
+      <p>
+        Life Street supports the wellbeing of employees by providing wellbeing information, events and personal, confidential coaching. <br/><br/>
+
+        Your access to this App and connected services is enabled by your employer’s agreement with Life Street and your registration on the Life Street Wellbeing Website. <br/><br/>
+
+        This App is integrated with that Website and so the terms and conditions of use of this App are covered by those at <a style="text-decoration: none" target="_blank" href="https://wellbeing.lifestreet.com.au/terms-conditions/">https://wellbeing.lifestreet.com.au/terms-conditions/</a> <br/><br/>
+
+        If you have any queries, or if we can assist you with information or coaching, you can message Life Street via the Ask a Question function on this App or email <a href="mailto:hello@lifestreet.com.au">hello@lifestreet.com.au</a>. <br/><br/>
+      </p>
+      <!--<p class="terms-paragraph" [innerHTML]="terms?.post_content"></p>-->
+    </div>
+</ion-content>

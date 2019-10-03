@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar color="navbar" align-title="center" padding>
+
+    <ion-buttons left>
+        <button ion-button icon-only (click)="this.navCtrl.pop()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </button>
+    </ion-buttons>
+
+    <ion-buttons end>
+        <button menuToggle ion-button icon-only>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title class="ion-text-start">
+        <img alt="logo" src="assets/images/lifestreet_home_logo.jpg">
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content pullingText="Pull to refresh..." refreshingText="Refreshing...">
+      </ion-refresher-content>
+  </ion-refresher>
+
+
+  <div id="contact-content" padding>
+    <h1 padding-top text-center>{{ contact.title }}</h1>
+
+
+    <form (ngSubmit)="submitContact()">
+      <div>
+        <label>
+          First Name
+        </label>
+        <div>
+          <input [(ngModel)]="input.firstname" type="text" name="firstname">
+        </div>
+      </div>
+
+      <div padding-top>
+        <label>
+          Last Name
+        </label>
+        <div>
+          <input [(ngModel)]="input.lastname" type="text" name="lastname">
+        </div>
+      </div>
+
+      <div padding-top>
+        <label>
+          Email Address
+        </label>
+        <div>
+          <input [(ngModel)]="input.email" type="email" name="email">
+        </div>
+      </div>
+
+      <div padding-top>
+        <label>
+          Message
+        </label>
+        <div>
+          <textarea [(ngModel)]="input.message" rows="6" name="message"></textarea>
+        </div>
+      </div>
+
+
+      <div padding-top>
+        <button type="submit" ion-button color="dark" full>SUBMIT</button>
+      </div>
+
+
+    </form>
+  </div>
+
+</ion-content>

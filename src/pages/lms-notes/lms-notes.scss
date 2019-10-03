@@ -1,0 +1,26 @@
+page-lms-notes {
+    
+    .card { width: auto; min-height: 350px; }
+     textarea.text-input{
+      min-height: 350px !important;
+      color:#000;
+     }
+
+     ion-list > .item-block { border: none!important; padding: 0; }
+
+     .notes{
+      white-space:pre-wrap;
+      color: $lms-bg-inverse;
+     }
+     .notes-date { color: #999; }
+     .notes-question {
+        color: $lms-bg-inverse;
+        margin-bottom: 1.5rem;
+     }
+
+     .notes,[contenteditable]{
+        -webkit-user-select:text;
+        user-select:text;
+     }
+
+}
